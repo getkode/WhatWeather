@@ -72,7 +72,7 @@ WhatWeather uses [Climacons font](http://adamwhitcroft.com/climacons/) to displa
 ```
 Usage
 -----
-```js
+```html
 <script type="text/javascript">
     $("#container").whatWeather({city:"brussels,belgium", days:"5"});
 </script>
