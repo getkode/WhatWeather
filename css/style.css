@@ -1,6 +1,7 @@
+/* ------------ DEFAULT SETTINGS ----------- */
 body{
 	padding-top: 10px;
-	font-family: "Roboto Condensed","arial","Georgia","verdana","Times New Roman","Serif";
+	font-family: "Roboto Condensed","arial","Georgia","verdana","Times New Roman";
 }
 div.loading{
 	position: absolute;

@@ -4,13 +4,11 @@ WhatWeather
 WhatWeather is a [jQuery](https://github.com/jquery/jquery) plugin which provides weather's data. 
 It uses [worldweatheronline.com](http://www.worldweatheronline.com/) API to get, parse and deliver data in order to create weather's widgets.
 WhatWeather provides data and let you manage the display. 
-However, it uses [Mustach](https://github.com/janl/mustache.js). In this way, you can easely change the template of your widgets.
+However, it uses [Mustache](https://github.com/janl/mustache.js). In this way, you can easely change the template of your widgets.
 
 License
 -------
-You may use WhatWeather under the terms of the Creative Commons [See [LICENCE](http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode)].
-
-[![Creative Commons logo](http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en)
+You may use WhatWeather under the terms of the of the GNU GPL licence [See [LICENCE](http://www.gnu.org/licenses/gpl-3.0.en.html)].
 
 What it can do
 --------------
@@ -25,13 +23,12 @@ You can get weather data from cities all over the world. The plugin uses the nam
 
 ###Demo
 
-Coming soon ...
+Find more exemples on this [page](http://getkode.be/whatweather/whatweather-documentation/).
 
 Package content
 -----------------
-* js/jquery.min.2.0.0.js
-* js/mustache.js
-* js/whatweather.0.5.js
+* js/whatweather-1.0.js
+* js/whatweather-1.0.min.js
 * css/webfonts/Climacons.ttf
 * css/webfonts/climacons-webfont.eot
 * css/webfonts/climacons-webfont.svg
@@ -46,17 +43,18 @@ Installation
 First, you must have a worldweatheronline.com key API. You can have a free one at [this page](http://developer.worldweatheronline.com/member/register). A PHP file is used in order to do Ajax requests..
 
 ```php
+ini_set('allow_url_fopen', true);
 // your private key
 $yourKey  = "";
-// if the geolocation or IP options are used
-$location = isset($_POST["latitude"]) && isset($_POST["longitude"]) && $_POST["latitude"] && $_POST["longitude"] ?
-                 $_POST["latitude"].",".$_POST["longitude"] : $_POST["city"];
-$location = isset($_POST["ip"]) && $_POST["ip"] == "true" ? $_SERVER["SERVER_ADDR"] : $location;
+// if the geolocation or IP options
+$location = isset($_GET["latitude"]) && isset($_GET["longitude"]) && $_GET["latitude"] && $_GET["longitude"] ?
+                  $_GET["latitude"].",".$_GET["longitude"] : $_GET["city"];
+$location = isset($_GET["ip"]) && $_GET["ip"] == "true" ? $_SERVER["REMOTE_ADDR"] : $location;
 // echo the result
 echo file_get_contents("http://free.worldweatheronline.com/feed/weather.ashx?"
                         ."q=". $location ."&"
                         ."format=json&"
-                        ."num_of_days=". $_POST["days"] ."&"
+                        ."num_of_days=". $_GET["days"] ."&"
                         ."includeLocation=yes&"
                         .'extra=localObsTime&'
                         ."key=". $yourKey);
@@ -68,7 +66,7 @@ WhatWeather uses [Climacons font](http://adamwhitcroft.com/climacons/) to displa
 ```html
 <script type="text/javascript" src="js/jquery.min.2.0.0.js"></script>
 <script type="text/javascript" src="js/mustache.js"></script>
-<script type="text/javascript" src="js/whatweather.0.5.js"></script>
+<script type="text/javascript" src="js/whatweather-1.0.min.js"></script>
 ```
 Usage
 -----
@@ -170,5 +168,3 @@ Date format, default value is "{{d}}/{{m}}/{{Y}}".
 Date format of the update data. Default value is "{{l}} {{M}} {{j}}, {{Y}}".
 ### template
 You can select which default template to use. Default value is 0.
-
-More documentation coming soon ... Stay tune ;-)
