@@ -1,38 +1,38 @@
 {
-"name": "whatweather",
-"title": "jQuery WhatWeather",
-"description": "WhatWeather is a jQuery plugin which provides weather's data. It uses worldweatheronline.com API to get, parse and deliver data in order to create weather's widgets. WhatWeather provides data and let you manage the display. However, it uses Mustache. In this way, you can easely change the template of your widgets.",
-"keywords": [
-"weather",
-"forecast",
-"sun",
-"rain"
-],
-"version": "1.0.1",
-"author": {
-"name": "Salman Amakran",
-"url": "http://getkode.be"
-},
-"maintainers": [
-{
-"name": "Salman Amakran",
-"email": "makia@outlook.be",
-"url": "http://getkode.be"
-}
-],
-"licenses": [
-{
-"type": "GNU GPL v3",
-"url": "http://www.gnu.org/licenses/gpl-3.0.en.html"
-}
-],
-"bugs": "https://github.com/getkode/WhatWeather/issues",
-"homepage": "https://github.com/getkode/WhatWeather",
-"docs": "https://github.com/getkode/WhatWeather",
-"demo": "http://getkode.be/whatweather/whatweather-documentation/#exemples",
-"download": "https://github.com/getkode/WhatWeather/archive/master.zip",
-"dependencies": {
-"jquery": ">=1.7",
-"Mustache": ">=1.0"
-}
+	"name": "whatweather",
+	"title": "jQuery WhatWeather",
+	"description": "WhatWeather is a jQuery plugin which provides weather's data. It uses worldweatheronline.com API to get, parse and deliver data in order to create weather's widgets. WhatWeather provides data and let you manage the display. However, it uses Mustache. In this way, you can easely change the template of your widgets.",
+	"keywords": [
+		"weather",
+		"forecast",
+		"sun",
+		"rain"
+	],
+	"version": "1.0.1",
+	"author": {
+		"name": "Salman Amakran",
+		"url": "http://getkode.be"
+	},
+	"maintainers": [
+		{
+			"name": "Salman Amakran",
+			"email": "makia@outlook.be",
+			"url": "http://getkode.be"
+		}
+	],
+	"licenses": [
+		{
+			"type": "GNU GPL v3",
+			"url": "http://www.gnu.org/licenses/gpl-3.0.en.html"
+		}
+	],
+	"bugs": "https://github.com/getkode/WhatWeather/issues",
+	"homepage": "https://github.com/getkode/WhatWeather",
+	"docs": "https://github.com/getkode/WhatWeather",
+	"demo": "http://getkode.be/whatweather/whatweather-documentation/#exemples",
+	"download": "https://github.com/getkode/WhatWeather/archive/master.zip",
+	"dependencies": {
+		"jquery": ">=1.7",
+		"Mustache": ">=1.0"
+	}
 }
