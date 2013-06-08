@@ -8,7 +8,7 @@
 "sun",
 "rain"
 ],
-"version": "1.0.0",
+"version": "1.0.1",
 "author": {
 "name": "Salman Amakran",
 "url": "http://getkode.be"
@@ -29,6 +29,7 @@
 "bugs": "https://github.com/getkode/WhatWeather/issues",
 "homepage": "https://github.com/getkode/WhatWeather",
 "docs": "https://github.com/getkode/WhatWeather",
+"demo": "http://getkode.be/whatweather/whatweather-documentation/#exemples",
 "download": "https://github.com/getkode/WhatWeather/archive/master.zip",
 "dependencies": {
 "jquery": ">=1.7",
