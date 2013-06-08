@@ -11,7 +11,7 @@
 "version": "1.0.0",
 "author": {
 "name": "Salman Amakran",
-"url": "https://github.com/getkode/WhatWeather"
+"url": "http://getkode.be"
 },
 "maintainers": [
 {
@@ -27,7 +27,7 @@
 }
 ],
 "bugs": "https://github.com/getkode/WhatWeather/issues",
-"homepage": "http://getkode.be/whatweather/",
+"homepage": "https://github.com/getkode/WhatWeather",
 "docs": "https://github.com/getkode/WhatWeather",
 "download": "https://github.com/getkode/WhatWeather/archive/master.zip",
 "dependencies": {
