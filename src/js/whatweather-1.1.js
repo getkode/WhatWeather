@@ -273,7 +273,7 @@
                             $.ajaxSetup({
                                 async: false
                             });
-                            $.getJSON("http://jsonip.appspot.com/", function(data){
+                            $.getJSON("http://jsonip.com", function(data){
                                 options.city = data.ip;
                             });
                             $.ajaxSetup({
