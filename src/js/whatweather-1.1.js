@@ -1,5 +1,5 @@
 /*
- * WhatWeather 1.0, jQuery plugin
+ * WhatWeather 1.1, jQuery plugin
  *
  * Copyright(c) 2013, Salman Amakran
  * http://getkode.be/whatweather/
@@ -28,6 +28,7 @@
                 // default settings    
                 var options = {
                     uuid: uuid,
+                    key : "",
                     uri: uri,
                     id: "",
                     city: "",
@@ -38,7 +39,7 @@
                     geolocation: false,
                     async: true,
                     refresh: 600,
-                    dayAndNight: true,
+                    dayAndNight: false,
                     cssClass: "widget-1",
                     typeTemp: "C",
                     day: "Date",
@@ -265,20 +266,34 @@
                     $this.append(el);
 
                     if (needRefresh) {
-                        $.ajax({
-                            url : options.uri +'/get_weather.php',
-                            type: 'GET',
-                            data: {
-                                city: options.city.replace(" ", "+"),
-                                days: options.days,
-                                latitude: options.latitude,
-                                longitude: options.longitude,
-                                ip: options.ip,
-                                uuid: uuid
-                            },
-                            dataType: 'json',
-                            async: options.async,
-                            beforeSend : options.before(el, options)
+                        // call before method
+                        options.before(el);
+                        // if ip option set to true, get the ip address
+                        if (options.ip) {
+                            $.ajaxSetup({
+                                async: false
+                            });
+                            $.getJSON("http://jsonip.appspot.com/", function(data){
+                                options.city = data.ip;
+                            });
+                            $.ajaxSetup({
+                                async: true
+                            });
+                        } else if (options.latitude != 0 && options.longitude != 0){
+                            options.city = options.latitude+","+options.longitude;
+                        }
+                        // test if async option is seted
+                        $.ajaxSetup({
+                            async: options.async
+                        });
+                        // get JSON data
+                        $.getJSON("http://free.worldweatheronline.com/feed/weather.ashx?callback=?", {
+                            q: options.city.replace(" ", "+"),
+                            num_of_days: options.days,
+                            key: options.key,
+                            includeLocation: "yes",
+                            extra: "localObsTime",
+                            format: "json"
                         }).done(function(response){
                             if (response.data.error) {
                                 options.msgError = response.data.error[0].msg;

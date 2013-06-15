@@ -23,12 +23,12 @@ You can get weather data from cities all over the world. The plugin uses the nam
 
 ###Demo
 
-Find more exemples on this [page](http://getkode.be/whatweather/whatweather-documentation/).
+Find more exemples on this [page](http://getkode.be/whatweather/whatweather-documentation/#exemples).
 
 Package content
 -----------------
-* js/whatweather-1.0.js
-* js/whatweather-1.0.min.js
+* js/whatweather-1.1.js
+* js/whatweather-1.1.min.js
 * css/webfonts/Climacons.ttf
 * css/webfonts/climacons-webfont.eot
 * css/webfonts/climacons-webfont.svg
@@ -36,29 +36,11 @@ Package content
 * css/webfonts/climacons-webfont.woff
 * css/webfonts/climacons-font.css
 * css/style.css
-* get_weather.php
 
 Installation
 -----------
-First, you must have a worldweatheronline.com key API. You can have a free one at [this page](http://developer.worldweatheronline.com/member/register). A PHP file is used in order to do Ajax requests..
+First, you must have a worldweatheronline.com key API. You can have a free one at [this page](http://developer.worldweatheronline.com/member/register). 
 
-```php
-ini_set('allow_url_fopen', true);
-// your private key
-$yourKey  = "";
-// if the geolocation or IP options
-$location = isset($_GET["latitude"]) && isset($_GET["longitude"]) && $_GET["latitude"] && $_GET["longitude"] ?
-                  $_GET["latitude"].",".$_GET["longitude"] : $_GET["city"];
-$location = isset($_GET["ip"]) && $_GET["ip"] == "true" ? $_SERVER["REMOTE_ADDR"] : $location;
-// echo the result
-echo file_get_contents("http://free.worldweatheronline.com/feed/weather.ashx?"
-                        ."q=". $location ."&"
-                        ."format=json&"
-                        ."num_of_days=". $_GET["days"] ."&"
-                        ."includeLocation=yes&"
-                        .'extra=localObsTime&'
-                        ."key=". $yourKey);
-```
 WhatWeather uses [Climacons font](http://adamwhitcroft.com/climacons/) to display weather's icons.
 ```html
 <link href='css/webfont/climacons-font.css' rel='stylesheet' type='text/css'>
@@ -66,13 +48,13 @@ WhatWeather uses [Climacons font](http://adamwhitcroft.com/climacons/) to displa
 ```html
 <script type="text/javascript" src="js/jquery.min.2.0.0.js"></script>
 <script type="text/javascript" src="js/mustache.js"></script>
-<script type="text/javascript" src="js/whatweather-1.0.min.js"></script>
+<script type="text/javascript" src="js/whatweather-1.1.min.js"></script>
 ```
 Usage
 -----
 ```html
 <script type="text/javascript">
-    $("#container").whatWeather({city:"brussels,belgium", days:"5"});
+    $("#container").whatWeather({key:"your key",city:"brussels,belgium", days:"5"});
 </script>
 ```
 Methods
@@ -81,6 +63,7 @@ Methods
 You can override this method in order to do something before the data's request. The method takes one argument: a jQuery element.
 ```js
 $("#container").whatWeather({
+    key:"your key",
     city: "brussels,belgium", 
     days: "5", 
     before: function(el){
@@ -92,6 +75,7 @@ $("#container").whatWeather({
 After the request of the weather data, this method is called. The method takes one argument: a jQuery element.
 ```js
 $("#container").whatWeather({
+    key:"your key",
     city: "brussels,belgium", 
     days: "5", 
     after: function(el){
@@ -103,6 +87,7 @@ $("#container").whatWeather({
 When the Ajax request succeeded, this method is used to manipulate the data. The method takes 2 arguments: a jQuery element and JSON object which contains data weather.
 ```js
 $("#container").whatWeather({
+    key:"your key",
     city: "brussels,belgium", 
     days: "5", 
     success: function(el, data){
@@ -114,6 +99,7 @@ $("#container").whatWeather({
 The fail method is called if the request failed.
 ```js
 $("#container").whatWeather({
+    key:"your key",
     city: "brussels,belgium", 
     days: "5", 
     fail: function(el){
@@ -123,10 +109,15 @@ $("#container").whatWeather({
 ```
 Options
 -------
+### key
+key parameter is used for your private key.
+```js
+$("#container").whatWeather({key:"your key",city:"brussels,belgium", days:"5"});
+```
 ### id
 this parameter is used to identify each widget. It is a facultative parameter. If it is send, it will be used for the hashmap of web storage.
 ```js
-$("#container").whatWeather({id:"myFirstWidget",city:"brussels,belgium", days:"5"});
+$("#container").whatWeather({key:"your key",id:"myFirstWidget",city:"brussels,belgium", days:"5"});
 ```
 ### city
 This parameter contains city's name and country's name. The both are separated by a coma.
