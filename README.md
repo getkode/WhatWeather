@@ -18,7 +18,7 @@ The plugin can't do any things by itself. His job is to delivers weather's data.
 ![Second widget](http://getkode.files.wordpress.com/2013/05/widget-2.png?w=450)
 ![third widget](http://getkode.files.wordpress.com/2013/05/widget-3.png?w=448)
 
-You can get weather data from cities all over the world. The plugin uses the name of the city, geographic coordinate system, IP adresse or the HTML5 geolocation API. The plugin can also save data by using Web Storage API.
+You can get weather data from cities all over the world. The plugin uses the name of the city, geographic coordinate system, IP adresse or the HTML5 geolocation API. The plugin have also a client-server caching system by using Web Storage API and text file.
 
 
 ###Demo
@@ -27,8 +27,8 @@ Find more exemples on this [page](http://getkode.be/whatweather/whatweather-docu
 
 Package content
 -----------------
-* js/whatweather-1.1.js
-* js/whatweather-1.1.min.js
+* js/whatweather-1.2.js
+* js/whatweather-1.2.min.js
 * css/webfonts/Climacons.ttf
 * css/webfonts/climacons-webfont.eot
 * css/webfonts/climacons-webfont.svg
@@ -48,7 +48,7 @@ WhatWeather uses [Climacons font](http://adamwhitcroft.com/climacons/) to displa
 ```html
 <script type="text/javascript" src="js/jquery.min.2.0.0.js"></script>
 <script type="text/javascript" src="js/mustache.js"></script>
-<script type="text/javascript" src="js/whatweather-1.1.min.js"></script>
+<script type="text/javascript" src="js/whatweather-1.2.min.js"></script>
 ```
 Usage
 -----
@@ -135,6 +135,8 @@ Number of days of forecast. Default value is 1 and the maximum is 5.
 This parameter indicates if the request will be asynchronous. Default value is true.
 ### refresh
 The refresh parameter is used if you want to save data and don't send a request every page refresh. The value represent a second. Default value 600 (10 min).
+### cache
+The cache parameter is used for caching data from the server side. Default value is false.
 ### cssClass
 This is used for the defaults templates. You can specify a CSS class to change the design of the template. Default value is "widget-1".
 ###Regional options
