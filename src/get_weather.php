@@ -15,7 +15,7 @@ $yourKey  = "";
 // if the geolocation or IP options
 $location = isset($_GET["latitude"]) && isset($_GET["longitude"]) && $_GET["latitude"] && $_GET["longitude"] ?
 				 $_GET["latitude"].",".$_GET["longitude"] : $_GET["city"];
-$location = isset($_GET["ip"]) && $_GET["ip"] == "true" ? $_SERVER["SERVER_ADDR"] : $location;
+$location = isset($_GET["ip"]) && $_GET["ip"] == "true" ? $_SERVER["REMOTE_ADDR"] : $location;
 // Caching of data
 $filename = "whatweather-". trim(base64_encode($location)) .".txt";
 
