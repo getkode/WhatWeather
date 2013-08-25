@@ -18,7 +18,7 @@ The plugin can't do any things by itself. His job is to delivers weather's data.
 ![Second widget](http://getkode.files.wordpress.com/2013/05/widget-2.png?w=450)
 ![third widget](http://getkode.files.wordpress.com/2013/05/widget-3.png?w=448)
 
-You can get weather data from cities all over the world. The plugin uses the name of the city, geographic coordinate system, IP adresse or the HTML5 geolocation API. The plugin have also a client-server caching system by using Web Storage API and text file.
+You can get weather data from cities all over the world. The plugin uses the name of the city, geographic coordinate system, IP adresse or the HTML5 geolocation API. The plugin have also a client-server caching system by using Web Storage API and text file for the server side.
 
 
 ###Demo
@@ -36,6 +36,7 @@ Package content
 * css/webfonts/climacons-webfont.woff
 * css/webfonts/climacons-font.css
 * css/style.css
+* get_weather.php
 
 Installation
 -----------
@@ -50,11 +51,18 @@ WhatWeather uses [Climacons font](http://adamwhitcroft.com/climacons/) to displa
 <script type="text/javascript" src="js/mustache.js"></script>
 <script type="text/javascript" src="js/whatweather-1.2.min.js"></script>
 ```
+You also must edit the "get_weather" PHP file to add your private key.
+```php
+...
+// your private key
+$yourKey  = "";
+...
+```
 Usage
 -----
 ```html
 <script type="text/javascript">
-    $("#container").whatWeather({key:"your key",city:"brussels,belgium", days:"5"});
+    $("#container").whatWeather({city:"brussels,belgium", days:"5"});
 </script>
 ```
 Methods
@@ -63,7 +71,6 @@ Methods
 You can override this method in order to do something before the data's request. The method takes one argument: a jQuery element.
 ```js
 $("#container").whatWeather({
-    key:"your key",
     city: "brussels,belgium", 
     days: "5", 
     before: function(el){
@@ -75,7 +82,6 @@ $("#container").whatWeather({
 After the request of the weather data, this method is called. The method takes one argument: a jQuery element.
 ```js
 $("#container").whatWeather({
-    key:"your key",
     city: "brussels,belgium", 
     days: "5", 
     after: function(el){
@@ -87,7 +93,6 @@ $("#container").whatWeather({
 When the Ajax request succeeded, this method is used to manipulate the data. The method takes 2 arguments: a jQuery element and JSON object which contains data weather.
 ```js
 $("#container").whatWeather({
-    key:"your key",
     city: "brussels,belgium", 
     days: "5", 
     success: function(el, data){
@@ -99,7 +104,6 @@ $("#container").whatWeather({
 The fail method is called if the request failed.
 ```js
 $("#container").whatWeather({
-    key:"your key",
     city: "brussels,belgium", 
     days: "5", 
     fail: function(el){
@@ -112,12 +116,12 @@ Options
 ### key
 key parameter is used for your private key.
 ```js
-$("#container").whatWeather({key:"your key",city:"brussels,belgium", days:"5"});
+$("#container").whatWeather({city:"brussels,belgium", days:"5"});
 ```
 ### id
 this parameter is used to identify each widget. It is a facultative parameter. If it is send, it will be used for the hashmap of web storage.
 ```js
-$("#container").whatWeather({key:"your key",id:"myFirstWidget",city:"brussels,belgium", days:"5"});
+$("#container").whatWeather({id:"myFirstWidget",city:"brussels,belgium", days:"5"});
 ```
 ### city
 This parameter contains city's name and country's name. The both are separated by a coma.
@@ -136,7 +140,7 @@ This parameter indicates if the request will be asynchronous. Default value is t
 ### refresh
 The refresh parameter is used if you want to save data and don't send a request every page refresh. The value represent a second. Default value 600 (10 min).
 ### cache
-The cache parameter is used for caching data from the server side. Default value is false.
+The cache parameter is used for caching data from the server side. Default value is false. It is used with the refresh parameter
 ### cssClass
 This is used for the defaults templates. You can specify a CSS class to change the design of the template. Default value is "widget-1".
 ###Regional options
