@@ -23,7 +23,7 @@ if ($_GET["cache"] ==  "true" && $_GET["refresh"] > 0 && file_exists($filename) 
 	$data = file_get_contents($filename);
 
 } else {
-	$data = file_get_contents("http://free.worldweatheronline.com/feed/weather.ashx?"
+	$data = file_get_contents("http://api.worldweatheronline.com/free/v1/weather.ashx?"
 						."q=". $location ."&"
 						."format=json&"
 						."num_of_days=". $_GET["days"] ."&"
